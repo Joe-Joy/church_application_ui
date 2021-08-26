@@ -1,27 +1,48 @@
 .user_registration {
-  margin: 150px 500px;
+  margin: 80px 500px;
   width: 370px;
   border: 1px solid lightgray;
   border-radius: 12px;
-  height: 300px;
+  height: 295px;
   padding: 5px;
+  box-shadow: inset 0 -3em 4em rgba(0, 0, 0, 0.2), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+  background-color: palevioletred;
 
-  background-color:palevioletred;
 }
 .user_registration h2 {
-  margin:  2px 0;
+  margin: 2px 0;
   padding: 5px;
   text-align: center;
-  /* background-color: blueviolet; */
   border-bottom: 1px solid black;
   font-weight: 100;
 }
 .input_method {
   padding: 5px;
-  margin-left: 50px;
+  margin-left: 70px;
   border: 1px solid lightgray;
   border-radius: 10px;
 }
-.btn{
-    text-align: center;
+.user_registration p {
+  color: red;
+  font-size: 10px;
+  margin-left: 74px;
+}
+
+.btn {
+  margin: 10px 0 0 135px;
+  padding: 8px 26px;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.close_icon {
+  font-size: 40px;
+  border: none;
+  background-color: white;
+  margin-left: 1200px;
+  margin-top: 50px;
+  color: darkgrey;
+  cursor: pointer;
 }

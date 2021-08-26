@@ -19,6 +19,7 @@
   padding: 0 10px;
   cursor: pointer;
   font-size: 12px;
+  text-decoration: none;
 }
 .home_page_content{
     display: inline-flex;
