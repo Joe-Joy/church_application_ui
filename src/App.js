@@ -5,6 +5,7 @@ import "./App.css";
 import Header from "./components/Header";
 import UserRegistration from "./components/UserRegistration";
 import SeatAllocation from "./components/SeatAllocation";
+import Invoice from "./components/Invoice";
 function App() {
   return (
     <Router>
@@ -13,6 +14,7 @@ function App() {
           <Header exact path="/" />
           <Route exact path="/UserRegistration" component={UserRegistration} />
           <Route exact path="/SeatAllocation" component={SeatAllocation} />
+          <Route exact path="/updates" component={Invoice} />
         </Switch>
       </Container>
     </Router>
@@ -20,3 +22,6 @@ function App() {
 }
 
 export default App;
+{
+  /* <Redirect to={{ pathname: '/', state: { from: props.location } }} /> */
+}

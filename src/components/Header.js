@@ -41,8 +41,7 @@ export default class Header extends Component {
           </Container>
         </div>
         <footer className="footer">
-            <h4>Developer by </h4>
-            <h6>Ashli</h6>
+            <h4>Developed by ASHLI</h4>
         </footer>
       </div>
       

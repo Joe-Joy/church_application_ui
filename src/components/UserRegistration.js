@@ -23,10 +23,13 @@ const UserRegistration = () => {
   };
   return (
     <div>
-      <MDBCloseIcon className="close_icon" onClick={(event) => (window.location.href = "/")} />
+      <MDBCloseIcon
+        className="close_icon"
+        onClick={(event) => (window.location.href = "/")}
+      />
       <div className="user_registration">
         <form className="form" onSubmit={handleSubmit(onSubmitHandler)}>
-          <h2>Login to User Registration Form</h2>
+          <h2 className="registration_heading">Login to User Registration Form</h2>
           <br />
           <input
             {...register("email")}
@@ -52,4 +55,4 @@ const UserRegistration = () => {
   );
 };
 export default UserRegistration;
-// 
+//

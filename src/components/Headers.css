@@ -3,11 +3,9 @@
   margin: 0 40px;
 }
 .menu {
-  /* background-color: blueviolet; */
   display: inline-flex;
 }
 .church_logo img {
-  /* height: 150px; */
   width: 110px;
   padding-top: 5px;
 }
@@ -25,7 +23,6 @@
     display: inline-flex;
 }
 .home_page_content img {
-  /* border-radius: 50%; */
   width: 400px;
   margin: 40px;
   font-weight: bold;
@@ -40,13 +37,9 @@
 }
 .footer{
     background-color: dimgrey;
-    color: lightsteelblue;
+    color: white;
 }
 .footer h4{
-    padding: 5px;
-    margin: 0;
-}
-.footer h6{
-    padding: 5px;
+    padding: 15px 5px;
     margin: 0;
 }

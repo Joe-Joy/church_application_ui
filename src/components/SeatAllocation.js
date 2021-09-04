@@ -1,168 +1,126 @@
 import React, { Component } from "react";
+import axios from "axios";
+import { withRouter } from "react-router-dom";
+import "./SeatAllocation.css";
 
-import SeatPicker from "react-seat-picker";
-
-// import ReactTooltip from 'react-tooltip';
-export default class App extends Component {
-  state = {
-    loading: false,
-  };
-
-  addSeatCallback = ({ row, number, id }, addCb) => {
-    this.setState(
-      {
-        loading: true,
-      },
-      async () => {
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        console.log(`Added seat ${number}, row ${row}, id ${id}`);
-        const newTooltip = `tooltip for id-${id} added by callback`;
-        addCb(row, number, id, newTooltip);
-        this.setState({ loading: false });
-      }
-    );
-  };
-
-  addSeatCallbackContinousCase = (
-    { row, number, id },
-    addCb,
-    params,
-    removeCb
-  ) => {
-    this.setState(
-      {
-        loading: true,
-      },
-      async () => {
-        if (removeCb) {
-          await new Promise((resolve) => setTimeout(resolve, 750));
-          console.log(
-            `Removed seat ${params.number}, row ${params.row}, id ${params.id}`
-          );
-          removeCb(params.row, params.number);
+class SeatAllocation extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectingSeats: [],
+    };
+  }
+  componentDidMount() {
+    axios.get("http://localhost:8080/seatData").then((res) => {
+      const resData = res.data;
+      console.log(resData);
+      for (let i = 0; i < resData.length; i++) {
+        if (resData[i].available === false) {
+          document
+            .getElementById(resData[i].seatNumber)
+            .setAttribute("disabled", true);
         }
-        await new Promise((resolve) => setTimeout(resolve, 750));
-        console.log(`Added seat ${number}, row ${row}, id ${id}`);
-        const newTooltip = `tooltip for id-${id} added by callback`;
-        addCb(row, number, id, newTooltip);
-        this.setState({ loading: false });
       }
-    );
+    });
+  }
+  choiceSeat = (seat) => {
+    const newBookedSeats = [...this.state.selectingSeats, seat];
+    this.setState({
+      selectingSeats: newBookedSeats,
+    });
   };
-
-  removeSeatCallback = ({ row, number, id }, removeCb) => {
-    this.setState(
-      {
-        loading: true,
-      },
-      async () => {
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        console.log(`Removed seat ${number}, row ${row}, id ${id}`);
-        // A value of null will reset the tooltip to the original while '' will hide the tooltip
-        const newTooltip = ["A", "B", "C"].includes(row) ? null : "";
-        removeCb(row, number, newTooltip);
-        this.setState({ loading: false });
-      }
-    );
+  SelectSeats = () => {
+    const Selected = this.state.selectingSeats;
+    if (Selected.length !== 0) {
+      axios
+        .post("http://localhost:8080/bookSeat", { seats: Selected })
+        .then((res) => {
+          this.props.history.push("/invoice");
+        });
+    } else {
+      alert("Please Select Seats");
+    }
+    // reset();
   };
 
   render() {
-    const rows = [
-      [
-        { id: 1, number: 1, isSelected: true, tooltip: "Reserved by you" },
-        { id: 2, number: 2, tooltip: "Cost: 15$" },
-        null,
-        {
-          id: 3,
-          number: "3",
-          isReserved: true,
-          orientation: "east",
-          tooltip: "Reserved by Rogger",
-        },
-        { id: 4, number: "4", orientation: "west" },
-        null,
-        { id: 5, number: 5 },
-        { id: 6, number: 6 },
-      ],
-      [
-        {
-          id: 7,
-          number: 1,
-          isReserved: true,
-          tooltip: "Reserved by Matthias Nadler",
-        },
-        { id: 8, number: 2, isReserved: true },
-        null,
-        { id: 9, number: "3", isReserved: true, orientation: "east" },
-        { id: 10, number: "4", orientation: "west" },
-        null,
-        { id: 11, number: 5 },
-        { id: 12, number: 6 },
-      ],
-      [
-        { id: 13, number: 1 },
-        { id: 14, number: 2 },
-        null,
-        { id: 15, number: 3, isReserved: true, orientation: "east" },
-        { id: 16, number: "4", orientation: "west" },
-        null,
-        { id: 17, number: 5 },
-        { id: 18, number: 6 },
-      ],
-      [
-        { id: 19, number: 1, tooltip: "Cost: 25$" },
-        { id: 20, number: 2 },
-        null,
-        { id: 21, number: 3, orientation: "east" },
-        { id: 22, number: "4", orientation: "west" },
-        null,
-        { id: 23, number: 5 },
-        { id: 24, number: 6 },
-      ],
-      [
-        { id: 25, number: 1, isReserved: true },
-        { id: 26, number: 2, orientation: "east" },
-        null,
-        { id: 27, number: "3", isReserved: true },
-        { id: 28, number: "4", orientation: "west" },
-        null,
-        { id: 29, number: 5, tooltip: "Cost: 11$" },
-        { id: 30, number: 6, isReserved: true },
-      ],
-    ];
-    const { loading } = this.state;
+    const seatsColumns = ["1","2","3","4", "5", "", "6","7","8","9","10","11","12"];
+    const seatsRows = ["A", "B", "C", "D", "E", "", "F", "G", "H", "I", "J"];
+    const seatsGenerator = () => {
+      return (
+        <table id="seatsBlock">
+          <tbody>
+            <tr>
+              <td>#</td>
+              {seatsColumns.map((column, index) => (
+                <td key={index}>{column}</td>
+              ))}
+
+            </tr>
+            {seatsRows.map((row, index) =>
+              row === "" ? (
+                <tr key={index} className="seatVGap"></tr>
+              ) : (
+                <tr key={index}>
+                  <td>{row}</td>
+                  {seatsColumns.map((column, index) => {
+                    return column === "" ? (
+                      <td key={index} className="seatGap"></td>
+                    ) : (
+                      <td key={index}>
+                        <input
+                          onClick={() => this.choiceSeat(`${row}${column}`)}
+                          type="checkbox"
+                          className="seats"
+                          id={`${row}${column}`}
+                          value={`${row}${column}`}
+                        />
+                      </td>
+                    );
+                  })}
+                </tr>
+              )
+            )}
+          </tbody>
+        </table>
+      );
+    };
     return (
       <div>
-        <h1>Seat Picker</h1>
-        <div style={{ marginTop: "100px" }}>
-          <SeatPicker
-            addSeatCallback={this.addSeatCallback}
-            removeSeatCallback={this.removeSeatCallback}
-            rows={rows}
-            maxReservableSeats={3}
-            alpha
-            visible
-            selectedByDefault
-            loading={loading}
-            tooltipProps={{ multiline: true }}
-          />
+        <div className="seat_page">
+          <h1>Church Seat Selection</h1>
+          <div className="seat_allocation">
+            <div className="w3ls-reg" style={{ paddingTop: "0px" }}>
+              <ul className="seat_w3ls">
+                <li className="smallBox greenBox">Selected Seat</li>
+
+                <li className="smallBox redBox">Reserved Seat</li>
+
+                <li className="smallBox emptyBox">Empty Seat</li>
+              </ul>
+
+              <div
+                className="seatStructure txt-center"
+                style={{ overflowX: "auto" }}
+              >
+                {seatsGenerator()}
+                <div className="screen">
+                  <h2 className="wthree">Screen this way</h2>
+                </div>
+                <button
+                  onClick={() => {
+                    this.SelectSeats();
+                  }}
+                >
+                  Confirm Selection
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        {/* <h1>Seat Picker Continuous Case</h1> */}
-        {/* <div style={{ marginTop: "100px" }}>
-          <SeatPicker
-            addSeatCallback={this.addSeatCallbackContinousCase}
-            removeSeatCallback={this.removeSeatCallback}
-            rows={rows}
-            maxReservableSeats={3}
-            alpha
-            visible
-            selectedByDefault
-            loading={loading}
-            tooltipProps={{ multiline: true }}
-            continuous
-          />
-        </div> */}
       </div>
     );
   }
 }
+
+export default withRouter(SeatAllocation);

@@ -1,14 +1,12 @@
 .user_registration {
   margin: 80px 500px;
-  width: 370px;
+  width: 390px;
   border: 1px solid lightgray;
   border-radius: 12px;
-  height: 295px;
+  height: 300px;
   padding: 5px;
-  box-shadow: inset 0 -3em 4em rgba(0, 0, 0, 0.2), 0 0 0 2px rgb(255, 255, 255),
-    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-  background-color: palevioletred;
-
+  box-shadow: inset 0 -3em 4em rgb(255, 255, 255), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgb(255, 255, 255);
 }
 .user_registration h2 {
   margin: 2px 0;
@@ -18,15 +16,26 @@
   font-weight: 100;
 }
 .input_method {
-  padding: 5px;
-  margin-left: 70px;
+  padding: 10px;
+  margin-left: 60px;
   border: 1px solid lightgray;
-  border-radius: 10px;
+  border-radius: 8px;
+  width: 250px;
+}
+.input_method:hover {
+  border: 2px solid #4169e1;
+}
+.input_method:active {
+  border: 2px solid #4169e1;
+}
+.input_method:focus-visible {
+  border: 2px solid #4169e1;
 }
 .user_registration p {
   color: red;
   font-size: 10px;
   margin-left: 74px;
+  /* border: 1px solid blue; */
 }
 
 .btn {
