@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+import { MDBCloseIcon } from "mdbreact";
 import "./SeatAllocation.css";
 
 class SeatAllocation extends Component {
@@ -44,7 +45,21 @@ class SeatAllocation extends Component {
   };
 
   render() {
-    const seatsColumns = ["1","2","3","4", "5", "", "6","7","8","9","10","11","12"];
+    const seatsColumns = [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+    ];
     const seatsRows = ["A", "B", "C", "D", "E", "", "F", "G", "H", "I", "J"];
     const seatsGenerator = () => {
       return (
@@ -55,7 +70,6 @@ class SeatAllocation extends Component {
               {seatsColumns.map((column, index) => (
                 <td key={index}>{column}</td>
               ))}
-
             </tr>
             {seatsRows.map((row, index) =>
               row === "" ? (
@@ -87,6 +101,10 @@ class SeatAllocation extends Component {
     };
     return (
       <div>
+        <MDBCloseIcon
+          className="close_icon"
+          onClick={(event) => (window.location.href = "/")}
+        />
         <div className="seat_page">
           <h1>Church Seat Selection</h1>
           <div className="seat_allocation">

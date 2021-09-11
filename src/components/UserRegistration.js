@@ -4,6 +4,8 @@ import { MDBCloseIcon } from "mdbreact";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import "./UserRegistration.css";
+import TextField from 'material-ui/TextField';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -18,7 +20,6 @@ const UserRegistration = () => {
   } = useForm({ resolver: yupResolver(schema) });
   const onSubmitHandler = (result) => {
     console.log({ result });
-    alert("Loginned Successfully");
     reset();
   };
   return (
@@ -30,25 +31,25 @@ const UserRegistration = () => {
       <div className="user_registration">
         <form className="form" onSubmit={handleSubmit(onSubmitHandler)}>
           <h2 className="registration_heading">Login to User Registration Form</h2>
-          <br />
-          <input
+          <MuiThemeProvider>
+          <TextField
             {...register("email")}
+            floatingLabelText="Email"
             className="input_method"
             type="email"
-            placeholder="Email"
           />
           <p>{errors.email?.message}</p>
-          <br />
-          <input
+          <TextField
             {...register("password")}
+            floatingLabelText="Password"
             className="input_method"
             type="password"
-            placeholder="Password"
           />
           <p>{errors.password?.message}</p>
           <button type="submit" className="btn">
             Login
           </button>
+          </MuiThemeProvider>
         </form>
       </div>
     </div>
