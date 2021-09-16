@@ -16,7 +16,7 @@ app.use("/seat_allocation", seat_allocation);
 // app.use("/seatData", seatData);
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("church application backend!");
 });
 
 const port = 8080;

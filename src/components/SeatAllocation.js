@@ -11,7 +11,9 @@ class SeatBooking extends Component {
         }
     }
     componentDidMount() {
-        axios.get('http://localhost:8000/seatData').then(res => {
+        console.log(this.state.selectingSeats);
+        
+        axios.get('http://localhost:8080/seatData/seatData').then(res => {
             const resData = res.data;
             for(let i=0;i<resData.length;i++){
                 if(resData[i].available === false){
@@ -22,6 +24,7 @@ class SeatBooking extends Component {
     }
     choiceSeat = (seat) => {
         const newBookedSeats = [ ...this.state.selectingSeats, seat ];
+        // console.log(newBookedSeats);
         this.setState({
             selectingSeats: newBookedSeats
         })
@@ -30,7 +33,7 @@ class SeatBooking extends Component {
         const Selected = this.state.selectingSeats;
         if(Selected.length !== 0)
         {
-            axios.post('http://localhost:8080/bookSeat', {"seats": Selected}).then(res => {
+            axios.post('http://localhost:8080/seat_allocation/bookSeat', {"seats": Selected}).then(res => {
                 this.props.history.push('/invoice')
             })
         }
@@ -85,9 +88,7 @@ class SeatBooking extends Component {
                         <div className="w3ls-reg" style={{paddingTop: '0px'}}>
                             <ul className="seat_w3ls">
                                 <li className="smallBox greenBox">Selected Seat</li>
-
                                 <li className="smallBox redBox">Reserved Seat</li>
-
                                 <li className="smallBox emptyBox">Empty Seat</li>
                             </ul>
                             <div className="seatStructure txt-center" style={{overflowX:'auto'}}>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
-
+import "./SeatAllocation.css";
 class Invoice extends Component {
   constructor (props) {
     super(props)
@@ -13,7 +13,10 @@ class Invoice extends Component {
   }
 
   componentDidMount () {
-    axios.get('http://localhost:8000/invoice').then(res => {
+    console.log(this.state.Seats);    
+    // {props.selected}
+    
+    axios.get('http://localhost:8080/seat_allocation/invoice').then(res => {
       this.setState({
         Seats: res.data.Seats,
         TotalSeats: res.data.totalSeats,
@@ -28,13 +31,13 @@ class Invoice extends Component {
         <div>
           <h1>Seat Selection Details</h1>
           <div className='container'>
-
             <div className='w3ls-reg'>
-
               <div className='displayerBoxes txt-center' style={{ overflowX: 'auto' }}>
                 <table className='Displaytable w3ls-table' width='100%'>
                   <tbody>
                     <tr>
+                      {/* <th>S.No.</th> */}
+                      {/* <th>Name</th> */}
                       <th>Seats</th>
                       <th>Total Seats</th>
                       <th>Total Price</th>
