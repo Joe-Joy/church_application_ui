@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const readSql = require("../Config/readSql");
+// const readSql = require("../Config/readSql");
 
+// Generating Default Dummy Data
 const CinemaSeat = [];
 for (let i = 0; i < 10; i++) {
   let SeatChar, SeatPrice;
@@ -15,8 +16,8 @@ for (let i = 0; i < 10; i++) {
   else if (i === 7) SeatChar = "H";
   else if (i === 8) SeatChar = "I";
   else if (i === 9) SeatChar = "J";
-  if (i === 0 || i === 1 || i === 2 || i === 3 || i === 4) SeatPrice = 19.99;
-  else SeatPrice = 12.99;
+  if (i === 0 || i === 1 || i === 2 || i === 3 || i === 4) SeatPrice = 90.99;
+  else SeatPrice = 120.99;
   for (let j = 0; j < 12; j++) {
     CinemaSeat.push({
       seatNumber: SeatChar + (j + 1),
@@ -26,7 +27,6 @@ for (let i = 0; i < 10; i++) {
     });
   }
 }
-console.log(CinemaSeat);
 
 router.get("/seatData", (req, res) => {
   res.status(200).json(CinemaSeat);
@@ -46,4 +46,19 @@ router.post("/bookSeat", (req, res) => {
   res.status(200).json({ msg: "success" });
 });
 
+router.get("/invoice", (req, res) => {
+  let Price = 0;
+  const TotalSeat = [];
+  for (let i = 0; i < CinemaSeat.length; i++) {
+    if (CinemaSeat[i].available === false) {
+      TotalSeat.push(CinemaSeat[i].seatNumber);
+      Price = Price + parseFloat(CinemaSeat[i].price);
+    }
+  }
+  res.status(200).json({
+    Seats: TotalSeat,
+    totalSeats: TotalSeat.length,
+    totalPrice: Price,
+  });
+});
 module.exports = router;

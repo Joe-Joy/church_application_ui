@@ -8,3 +8,11 @@ CREATE TABLE login_details(
 )
 
 INSERT INTO login_details VALUES ("jo@gmail.com",12345);
+
+
+CREATE TABLE seat_allocation(
+    seat_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    seat VARCHAR(255) NOT NULL,
+    total_seats VARCHAR(50) NOT NULL,
+    totoal_price FLOAT  NOT NULL
+)

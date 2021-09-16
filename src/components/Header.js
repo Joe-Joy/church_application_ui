@@ -17,7 +17,7 @@ export default class Header extends Component {
               <Col md={9}>
                 <ul className="menu_items">
                   <li>
-                    <a href="/userregistration">User Registration</a>
+                    <a href="/userlogin">User Registration</a>
                     <a href="/seatallocation">Seat Allocation</a>
                     <a href="/updates">Updates</a>
                   </li>
