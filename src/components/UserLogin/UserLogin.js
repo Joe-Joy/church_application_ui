@@ -8,7 +8,6 @@ import "./UserLogin.css";
 import TextField from "material-ui/TextField";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { Link } from "react-router-dom";
-import { Redirect } from 'react-router';
 
 class UserLogin extends Component {
   constructor(props) {
@@ -22,23 +21,23 @@ class UserLogin extends Component {
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  // reset form
+
+// reset form
 //   resetForm = () => {
 //     this.setState({ email: "", password: ""});
 // }
+
+
 // submit
   submitHandler = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:8080/login_form/login", this.state)
       .then((response) => {
-        console.log(response);
-        // this.localStorage.setItem('user', response.user.id)
-
+        console.log(response.data.user);
+        localStorage.setItem('user', response.data.user)
         this.props.history.push({
           pathname: '/SeatAllocation',
-          state: { detail: response.data }
-
         })
       })
       .catch((error) => {

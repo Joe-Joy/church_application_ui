@@ -25,7 +25,8 @@ router.post("/login", (req, res) => {
   var queryTwo = `SELECT * FROM login_details WHERE email='${req.body.email}' AND password='${req.body.password}'`;
   readSql.query(queryTwo, (err, result, fields) => {
     if (err) res.status(400).json({ success: false, message: err.code });
-    res.send({ success: true, message: "items showned!", result });
+    console.log(result[0].username);
+    res.send({ success: true, message: "items showned!", result, user: result[0].username});
   });
 });
 module.exports = router;

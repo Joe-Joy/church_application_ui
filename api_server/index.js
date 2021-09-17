@@ -9,11 +9,11 @@ app.use(bodyParser.json());
 
 const login_form = require("./route/login_form");
 const seat_allocation = require("./route/seat_allocation");
-// const seatData = require("./route/seatData");
+const seatData = require("./route/seatData");
 
 app.use("/login_form", login_form);
 app.use("/seat_allocation", seat_allocation);
-// app.use("/seatData", seatData);
+app.use("/seatData", seatData);
 
 app.get("/", (req, res) => {
   res.send("church application backend!");
