@@ -1,0 +1,62 @@
+.user_registration {
+    margin: 5px 490px;
+    width: 450px;
+    height: 450px;
+    border: 1px solid lightgray;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: inset 0 -3em 4em rgb(255, 255, 255), 0 0 0 2px rgb(255, 255, 255),
+      0.3em 0.3em 1em rgb(255, 255, 255);
+      /* box-shadow: rgba(173, 90, 58, 0.35) 0px 5px 15px; */
+      /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+  }
+  .user_registration h2 {
+    margin: 0px;
+    /* padding: 5px; */
+    text-align: center;
+    /* border-bottom: 1px solid black; */
+    font-weight: 100;
+  }
+  .input_method {
+    margin-left: 80px;
+    height: 0px;
+    border-radius: 8px;
+    width: 250px;
+    font-size: 5px;
+  }
+  /* .input_method:hover {
+    border: 2px solid #4169e1;
+  }
+  .input_method:active {
+    border: 2px solid #4169e1;
+  }
+  .input_method:focus-visible {
+    border: 2px solid #4169e1;
+  } */
+  .user_registration p {
+    color: red;
+    font-size: 10px;
+    margin-left: 104px;
+    /* border: 1px solid blue; */
+    padding:0;
+  }
+  
+  .btn {
+    margin: 16px 0 0 165px;
+    padding: 8px 26px;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+  
+  .close_icon {
+    font-size: 40px;
+    border: none;
+    background-color: white;
+    margin-left: 1200px;
+    margin-top: 30px;
+    color: darkgrey;
+    cursor: pointer;
+  }
+  

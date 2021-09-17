@@ -1,0 +1,46 @@
+.navbar {
+  padding: 0;
+  margin: 0 40px;
+}
+.menu {
+  display: inline-flex;
+}
+.church_logo img {
+  width: 110px;
+  padding-top: 5px;
+}
+.menu_items li {
+  list-style: none;
+  margin: 40px 5px 0 5px;
+}
+.menu_items li a {
+  padding: 0 10px;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: none;
+}
+.home_page_content{
+    display: inline-flex;
+}
+.home_page_content img {
+  width: 400px;
+  margin: 40px;
+  font-weight: bold;
+}
+.home_page_content img:hover {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+.welcome_message {
+  margin: 80px 10px 73px;
+  font-size: 35px;
+}
+.footer{
+    background-color: darkgray;
+    color: white;
+    height: 56px;
+}
+.footer h4{
+    padding: 15px 5px;
+    margin: 0;
+}

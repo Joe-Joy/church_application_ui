@@ -1,0 +1,47 @@
+.user_login {
+  margin: 50px 500px;
+  width: 450px;
+  height: 350px;
+  border: 1px solid lightgray;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: rgba(173, 90, 58, 0.35) 0px 5px 15px;
+}
+.user_login h2 {
+  margin: 2px 0;
+  padding: 5px;
+  text-align: center;
+  font-weight: 100;
+}
+.input_method {
+  margin-left: 100px;
+  border-radius: 8px;
+  width: 250px;
+  font-size: 5px;
+}
+.user_login p {
+  color: red;
+  font-size: 10px;
+  margin-left: 104px;
+  padding:0;
+}
+.btn {
+  margin: 16px 0 0 165px;
+  padding: 8px 26px;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+h6{
+  margin: 16px 0 0 115px;
+}
+.close_icon {
+  font-size: 40px;
+  border: none;
+  background-color: white;
+  margin-left: 1200px;
+  margin-top: 50px;
+  color: darkgrey;
+  cursor: pointer;
+}
