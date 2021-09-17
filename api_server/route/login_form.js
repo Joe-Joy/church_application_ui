@@ -15,7 +15,7 @@ router.get("/getLogin", (req, res) => {
 });
 
 router.post("/postLogin", (req, res) => {
-  var queryOne = `INSERT INTO login_details (email, password) VALUES ('${req.body.email}', '${req.body.password}')`;
+  var queryOne = `INSERT INTO login_details (username,email, password, confirmPassword) VALUES ('${req.body.username}','${req.body.email}', '${req.body.password}','${req.body.confirmPassword}')`;
   readSql.query(queryOne, (err, result, fields) => {
     if (err) res.status(400).json({ success: false, message: err.code });
     res.send({ success: true, message: "items inserted!", result });

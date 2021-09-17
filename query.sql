@@ -2,8 +2,10 @@ DATABASE NAME - church_application;
 
 CREATE TABLE login_details(
     login_id INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     password VARCHAR(32) NOT NULL,
+    confirmPassword VARCHAR(50) NOT NULL,
     PRIMARY KEY (login_id)
 )
 
