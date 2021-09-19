@@ -15,13 +15,13 @@ class SeatBooking extends Component {
         
         axios.get('http://localhost:8080/seatData').then(res => {
             console.log(res.data);
-            res.send("ok")
-            // const resData = res.data;
-            // for(let i=0;i<resData.length;i++){
-            //     if(resData[i].available === false){
-            //         document.getElementById(resData[i].seatNumber).setAttribute("disabled", true)
-            //     }
-            // }
+            // res.send("ok")
+            const resData = res.data;
+            for(let i=0;i<resData.length;i++){
+                if(resData[i].available === false){
+                    document.getElementById(resData[i].seatNumber).setAttribute("disabled", true)
+                }
+            }
         })
     }
     choiceSeat = (seat) => {

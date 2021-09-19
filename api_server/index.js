@@ -19,9 +19,22 @@ app.get("/", (req, res) => {
   res.send("church application backend!");
 });
 
+app.get("/", (req, res, next) => {
+  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+  res.setHeader("Access-Control-Allow-Origin","*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers","X-Requested-With,content-type");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
+
 const port = 8080;
 
 app.listen(port, () => {
   console.log(`running on  http://localhost:${port}`);
 });
 
+// Access-Control-Allow-Origin: "*",
+// 'Access-Control-Allow-Methods': "POST, GET, OPTIONS, DELETE, PUT"
+// 'Access-Control-Max-Age': "1000",
+// Header set Access-Control-Allow-Headers "x-requested-with, Content-Type, origin$/etc/apache2/apache2.conf

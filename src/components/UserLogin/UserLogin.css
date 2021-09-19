@@ -22,7 +22,7 @@
 .user_login p {
   color: red;
   font-size: 10px;
-  margin-left: 104px;
+  margin: 0 84px;
   padding:0;
 }
 .btn {
@@ -34,7 +34,7 @@
   border-radius: 5px;
 }
 h6{
-  margin: 16px 0 0 115px;
+  margin: 16px 0 0 105px;
 }
 .close_icon {
   font-size: 40px;
