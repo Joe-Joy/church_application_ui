@@ -9,22 +9,16 @@ import "./UserRegistration.css";
 import TextField from "material-ui/TextField";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { useHistory } from "react-router";
+import "./UserRegistration.css"
 
 const schema = yup.object().shape({
-  username: yup.string()
-  .max(15, 'Must be 15 characters or less')
-  .required("please Enter your username"),
+  username: yup.string().max(15, 'Must be 15 characters or less').required("please Enter your username"),
   email: yup.string().email().required("Please Enter your email"),
-    password: yup
-    .string()
-    .required('Please Enter your password')
-    .matches(
+  password: yup.string().required('Please Enter your password').matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
       "One number and one special Character"
     ),
-    confirmPassword: yup
-    .string()
-    .required('Please Enter your confirmPassword')
+    confirmPassword: yup.string().required('Please Enter your confirmPassword')
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{5,}$/,
       "One number and one special Character"
@@ -79,9 +73,9 @@ const UserRegistration = () => {
         className="close_icon"
         onClick={() => (window.location.href = "/")}
       />
-      <div className="user_login">
+      <div className="user_registration">
         <form className="form" onSubmit={handleSubmit(onSubmitHandler)}>
-          <h2 className="registration_heading">User Login Form</h2>
+          <h2 className="registration_heading">Registration Form</h2>
           <MuiThemeProvider>
           <TextField
               {...register("username")}
