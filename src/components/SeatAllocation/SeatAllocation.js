@@ -3,8 +3,8 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import "./SeatAllocation.css";
 import Modal from "react-awesome-modal";
+// import Modal from "react-native-modal";
 import { Container, Col, Row } from "react-bootstrap";
-import Examples from "../one";
 class SeatBooking extends Component {
   constructor(props) {
     super(props);
@@ -24,19 +24,32 @@ class SeatBooking extends Component {
     });
   }
 
-  componentDidMount() {
-    // axios.get("http://localhost:8080/seatData").then((res) => {
-    //   console.log(res.data);
-    //   const resData = res.data;
-    //   for (let i = 0; i < resData.length; i++) {
-    //     if (resData[i].available === false) {
-    //       document
-    //         .getElementById(resData[i].seatNumber)
-    //         .setAttribute("disabled", true);
-    //     }
-    //   }
-    // });
-  }
+  // componentDidMount() {
+  //   // axios.get("http://localhost:8080/seatData").then((res) => {
+  //   //   console.log(res.data);
+  //   //   const resData = res.data;
+  //   //   for (let i = 0; i < resData.length; i++) {
+  //   //     if (resData[i].available === false) {
+  //   //       document
+  //   //         .getElementById(resData[i].seatNumber)
+  //   //         .setAttribute("disabled", true);
+  //   //     }
+  //   //   }
+  //   // });
+  // }
+  // componentDidMount() {
+  //   axios.get("http://localhost:8080/seatData").then((res) => {
+  //     const resData = res.data;
+  //     for (let i = 0; i < resData.length; i++) {
+  //       if (resData[i].available === false) {
+  //         var Seats = resData[i].seatNumber;
+  //         var d = '"' + Seats + '"';
+  //         console.log(d);
+  //         document.getElementById(d).setAttribute("disabled", true);
+  //       }
+  //     }
+  //   });
+  // }
 
   choiceSeat = (seat) => {
     const newBookedSeats = [...this.state.selectingSeats, seat];
@@ -48,6 +61,7 @@ class SeatBooking extends Component {
 
   SelectSeats = () => {
     const Selected = this.state.selectingSeats;
+    console.log(Selected);
     if (Selected.length !== 0) {
       axios
         .post("http://localhost:8080/seat_allocation/bookSeat", {
@@ -97,55 +111,15 @@ class SeatBooking extends Component {
                       <td key={index} className="seatGap"></td>
                     ) : (
                       <td key={index}>
-                        <section>
-                          <input
-                            onClick={() => {
-                              this.openModal();
-                              this.choiceSeat(`${row}${column}`);
-                            }}
-                            type="checkbox"
-                            className="seats"
-                            id={`${row}${column}`}
-                            value={`${row}${column}`}
-                          />
-                          <Modal
-                            visible={this.state.visible}
-                            width="500"
-                            height="350"
-                            effect="fadeInUp"
-                            onClickAway={() => this.closeModal()}
-                          >
-                            <div className="popup">
-                              <Container style={{ display: "inline-block" }}>
-                                <Row>
-                                  <Col className="close" md={6}>
-                                    <a
-                                      style={{ marginLeft: "420px" }}
-                                      onClick={() => this.closeModal()}
-                                    >
-                                      x
-                                    </a>
-                                  </Col>
-                                  <Col className="head" md={6}>
-                                    <h1>SEAT DETAILS</h1>
-                                  </Col>
-                                </Row>
-                              </Container>
-                              <form>
-                                <label>Name:</label>
-                                <br />
-                                <input type="text" />
-                                <br />
-                                <br />
-                                <label>Seat No:</label>
-                                <br />
-                                <input type="text" />
-                                <br />
-                                <button className="btn">Submit</button>
-                              </form>
-                            </div>
-                          </Modal>
-                        </section>
+                        <input
+                          onClick={() => {
+                            this.choiceSeat(`${row}${column}`);
+                          }}
+                          type="checkbox"
+                          className="seats"
+                          id={`${row}${column}`}
+                          value={`${row}${column}`}
+                        />
                       </td>
                     );
                   })}
@@ -175,13 +149,42 @@ class SeatBooking extends Component {
                 <div className="screen">
                   <h2 className="wthree">Screen this way</h2>
                 </div>
-                <button
-                  onClick={() => {
-                    this.SelectSeats();
-                  }}
-                >
-                  Confirm Selection
-                </button>
+                <section>
+                  <button onClick={() => {this.openModal();this.SelectSeats();}}>
+                    Confirm Selection
+                  </button>
+                  <Modal visible={this.state.visible} width="500" height="350" effect="fadeInUp" onClick={() => this.closeModal()}>
+                    <div className="popup">
+                      <Container style={{ display: "inline-block" }}>
+                        <Row>
+                          <Col className="close" md={6}>
+                            <a href="/SeatAllocation"
+                              style={{ marginLeft: "420px" }}
+                              onClick={() => this.closeModal()}
+                            >
+                              x
+                            </a>
+                          </Col>
+                          <Col className="popup_heading" md={6}>
+                            <h3>SEAT DETAILS</h3>
+                          </Col>
+                        </Row>
+                      </Container>
+                      <form>
+                        <label className="popup_label">Name:</label>
+                        <br />
+                        <input className="popup_input" type="text" />
+                        <br />
+                        <br />
+                        <label className="popup_label">Seat No:</label>
+                        <br />
+                        <input type="text" className="popup_input" />
+                        <br />
+                        <button className="popup_btn">Submit</button>
+                      </form>
+                    </div>
+                  </Modal>
+                </section>
               </div>
             </div>
           </div>

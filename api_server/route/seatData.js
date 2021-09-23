@@ -1,160 +1,159 @@
 const express = require("express");
 const router = express.Router();
-const readSql = require("../Config/readSql");
+// const readSql = require("../Config/readSql");
 
 router.get("/", (req, res) => {
   res.send([
     {
-      seatNumber: "1A",
+      seatNumber: "A1",
       price: "£19.99",
       available: true,
       disabilityAccessible: true,
     },
     {
-      seatNumber: "2A",
+      seatNumber: "A2",
       price: "£19.99",
       available: false,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "3A",
+      seatNumber: "A3",
       price: "£19.99",
       available: false,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "4A",
+      seatNumber: "A4",
       price: "£19.99",
       available: true,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "5A",
+      seatNumber: "A5",
       price: "£19.99",
       available: false,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "1B",
+      seatNumber: "B1",
       price: "£12.99",
       available: true,
       disabilityAccessible: true,
     },
     {
-      seatNumber: "2B",
+      seatNumber: "B2",
       price: "£12.99",
       available: false,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "3B",
+      seatNumber: "B3",
       price: "£12.99",
       available: false,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "4B",
+      seatNumber: "B4",
       price: "£12.99",
       available: false,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "5B",
+      seatNumber: "B5",
       price: "£12.99",
       available: true,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "1C",
+      seatNumber: "C1",
       price: "£12.99",
       available: true,
       disabilityAccessible: true,
     },
     {
-      seatNumber: "2C",
+      seatNumber: "C2",
       price: "£12.99",
       available: true,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "3C",
+      seatNumber: "C3",
       price: "£12.99",
       available: true,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "4C",
+      seatNumber: "C4",
       price: "£12.99",
       available: true,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "5C",
+      seatNumber: "C5",
       price: "£12.99",
       available: true,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "1D",
+      seatNumber: "D1",
       price: "£12.99",
       available: true,
       disabilityAccessible: true,
     },
     {
-      seatNumber: "2D",
+      seatNumber: "D2",
       price: "£12.99",
       available: false,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "3D",
+      seatNumber: "D3",
       price: "£12.99",
       available: true,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "4D",
+      seatNumber: "D4",
       price: "£12.99",
       available: true,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "5D",
+      seatNumber: "D5",
       price: "£12.99",
       available: true,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "1E",
+      seatNumber: "E1",
       price: "£8.99",
       available: true,
       disabilityAccessible: true,
     },
     {
-      seatNumber: "2E",
+      seatNumber: "E2",
       price: "£8.99",
       available: true,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "3E",
+      seatNumber: "E3",
       price: "£8.99",
       available: false,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "4E",
+      seatNumber: "E4",
       price: "£8.99",
       available: true,
       disabilityAccessible: false,
     },
     {
-      seatNumber: "5E",
+      seatNumber: "E5",
       price: "£8.99",
       available: true,
       disabilityAccessible: false,
-    }
-  ]
-  );
+    },
+  ]);
 });
 module.exports = router;

@@ -1,26 +1,3 @@
-
-
-
-
-ul {
-  list-style: none;
-  margin: 0px;
-  padding: 0px;
-}
-
-/* blockquote,
-q {
-  quotes: none;
-} */
-
-/* blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
-} */
-
 table {
   display: table;
   border-collapse: separate;
@@ -43,100 +20,12 @@ a {
   text-decoration: none;
 }
 
-.txt-rt {
-  text-align: right;
-}
-
-/* text align right */
-
-.txt-lt {
-  text-align: left;
-}
-
-/* text align left */
-
 .txt-center {
   text-align: center;
 }
 
-/* text align center */
-
-.float-rt {
-  float: right;
-}
-
-/* float right */
-
-.float-lt {
-  float: left;
-}
-
-/* float left */
-
-.clearfix {
-  clear: both;
-}
-
-/* clear float */
-
-.pos-relative {
-  position: relative;
-}
-
-/* Position Relative */
-
-.pos-absolute {
-  position: absolute;
-}
-
-/* Position Absolute */
-
-.vertical-base {
-  vertical-align: baseline;
-}
-
-/* vertical align baseline */
-
-.vertical-top {
-  vertical-align: top;
-}
-
-/* vertical align top */
-
-/* nav.vertical ul li {
-  display: block;
-} */
-
-/* vertical menu */
-
 nav.horizontal ul li {
   display: inline-block;
-}
-
-/* horizontal menu */
-
-img {
-  max-width: 100%;
-}
-
-/*--end reset--*/
-
-/* button.w3l-cart {
-  transition: 0.5s all;
-  -webkit-transition: 0.5s all;
-  -moz-transition: 0.5s all;
-  -o-transition: 0.5s all;
-  -ms-transition: 0.5s all;
-  text-decoration: none;
-  outline: none;
-} */
-/* 
-body a:hover {
-  text-decoration: none;
-} */
-
-.clearfix {
-  clear: both;
 }
 
 /* content */
@@ -236,8 +125,8 @@ label {
   color: #fff;
   font-weight: 600;
 }
+/* input[type="text"], */
 
-input[type="text"],
 input[type="number"] {
   padding: 1em;
   width: 80%;
@@ -398,19 +287,29 @@ input[type=checkbox]:checked:before {
 }
 .popup {
   margin: 10px 30px;
+  padding: 0px;
 }
-.popup label {
+.popup_label {
   color: black;
   padding-bottom: 20px;
   margin: 10px;
 }
-.popup input {
+.popup_input{
   padding: 3px 2px;
-  width: 250px;
+  /* width: 200px; */
+  /* height: 0px; */
   background: transparent;
   border: 1px solid #888686;
   margin-top: 10px;
   color: black;
+
+  /* padding: 1em; */
+  /* width: 80%; */
+  /* background: transparent; */
+  /* border: 1px solid #888686; */
+  /* font-size: 1em; */
+  /* margin-top: 10px; */
+  /* color: #fff; */
 }
 .close a {
   /* margin-left: 420px; */
@@ -420,11 +319,13 @@ input[type=checkbox]:checked:before {
   display: inline-block;
   cursor: pointer;
 }
-.head h1 {
+.popup_heading h3 {
   margin: 5px;
-  text-align: center;
+  font-size: 30px;
+  /* text-align: center; */
   color: blue;
+  /* font-weight: 900; */
 }
-.btn {
+.popup_btn {
   margin: 15px 0px;
 }
